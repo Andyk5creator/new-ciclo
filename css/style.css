@@ -17,19 +17,11 @@
 }
 
 [data-fp] {
-  min-height: 100vh;
+  height: 100vh;
 }
 
-@supports (min-height: 100dvh) {
-  .touch [data-fp] {
-    min-height: 100dvh;
-  }
-}
-
-@supports not (min-height: 100dvh) {
-  .touch [data-fp] {
-    min-height: calc(var(--vh, 1vh) * 100);
-  }
+.touch [data-fp] {
+  height: calc(var(--vh, 1vh) * 100);
 }
 
 .fp-init [data-fp] {
