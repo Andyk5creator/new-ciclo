@@ -33,6 +33,20 @@
             document.documentElement.classList.add(className);
         }));
     }
+    function addTouchClass() {
+        if (isMobile.any()) document.documentElement.classList.add("touch");
+    }
+    function fullVHfix() {
+        const fullScreens = document.querySelectorAll("[data-fullscreen]");
+        if (fullScreens.length && isMobile.any()) {
+            window.addEventListener("resize", fixHeight);
+            function fixHeight() {
+                let vh = window.innerHeight * .01;
+                document.documentElement.style.setProperty("--vh", `${vh}px`);
+            }
+            fixHeight();
+        }
+    }
     function uniqArray(array) {
         return array.filter((function(item, index, self) {
             return self.indexOf(item) === index;
@@ -525,5 +539,7 @@
         }
     }), 0);
     isWebp();
+    addTouchClass();
+    fullVHfix();
     digitsCounter();
 })();
